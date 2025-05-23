@@ -41,14 +41,7 @@ export default function navbar() {
                     Vendor Directory
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    className="text-lg text-gray-700 transition hover:text-gray-700/75"
-                    href="/dashboard/booking"
-                  >
-                    Book a Vendor
-                  </Link>
-                </li>
+                
                 <li>
                   <Link
                     className="text-lg text-gray-700 transition hover:text-gray-700/75"
