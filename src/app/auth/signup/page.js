@@ -2,66 +2,35 @@ import Link from "next/link";
 
 export default function SignUp() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Create your account</h2>
-        </div>
-        <form className="mt-8 space-y-6" action="#" method="POST">
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <label htmlFor="name" className="sr-only">Full name</label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                placeholder="Full name"
-              />
+    <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="rounded-xl border-2 border-blue-300 shadow-lg p-10 w-[600px] bg-teal-600 flex flex-col items-center">
+        <h2 className="text-3xl font-normal text-white mb-6">VendorLink</h2>
+        <form className="w-full flex flex-col items-center" action="#" method="POST">
+          <div className="flex w-full gap-6 mb-4">
+            <div className="flex flex-col w-1/2 gap-3">
+              <label htmlFor="name" className="text-white text-sm mb-1">Full Name</label>
+              <input id="name" name="name" type="text" required className="rounded-full px-3 py-1 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-300 shadow" />
+              <label htmlFor="email" className="text-white text-sm mb-1">Email</label>
+              <input id="email" name="email" type="email" autoComplete="email" required className="rounded-full px-3 py-1 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-300 shadow" />
             </div>
-            <div>
-              <label htmlFor="email" className="sr-only">Email address</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
-              />
-            </div>
-            <div>
-              <label htmlFor="password" className="sr-only">Password</label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="new-password"
-                required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
-              />
+            <div className="flex flex-col w-1/2 gap-3">
+              <label htmlFor="password" className="text-white text-sm mb-1">Password</label>
+              <input id="password" name="password" type="password" autoComplete="new-password" required className="rounded-full px-3 py-1 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-300 shadow" />
+              <label htmlFor="confirmPassword" className="text-white text-sm mb-1">Confirm Password</label>
+              <input id="confirmPassword" name="confirmPassword" type="password" autoComplete="new-password" required className="rounded-full px-3 py-1 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-300 shadow" />
             </div>
           </div>
-
-          <div>
-            <button
-              type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-            >
-              Create Account
-            </button>
+          <div className="flex flex-col w-3/4 mb-4">
+            <label htmlFor="organization" className="text-white text-sm mb-1 text-center">School/Organization</label>
+            <input id="organization" name="organization" type="text" required className="rounded-full px-3 py-1 bg-white text-black focus:outline-none focus:ring-2 focus:ring-blue-300 shadow text-center" />
           </div>
+          <div className="flex items-center mb-4">
+            <input id="terms" name="terms" type="checkbox" required className="mr-2" />
+            <label htmlFor="terms" className="text-xs text-white">I agree to the terms and conditions</label>
+          </div>
+          <button type="submit" className="rounded-full bg-[#0a232e] text-white py-2 px-8 shadow-md hover:bg-[#183d4a] transition-all text-lg font-normal mb-2">Sign Up</button>
         </form>
-
-        <div className="text-center">
-          <Link href="/auth/signin" className="text-sm text-blue-600 hover:text-blue-500">
-            Already have an account? Sign in
-          </Link>
-        </div>
       </div>
     </div>
   );
-} 
+}
