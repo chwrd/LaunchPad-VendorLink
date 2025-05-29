@@ -15,7 +15,7 @@ export default function GuidePage() {
       </ol>
       <h2 className="text-2xl font-semibold mt-8 mb-2 text-[#179b98]">Tips</h2>
       <ul className="list-disc pl-6 text-gray-700 mb-4">
-        <li>Check vendor tags for special features like "Eco-friendly" or "Last Minute Changes".</li>
+        <li>Check vendor tags for special features like &quot;Eco-friendly&quot; or &quot;Last Minute Changes&quot;.</li>
         <li>Review top items and ratings to find the best fit for your event.</li>
         <li>Contact support if you need help or have questions.</li>
       </ul>
