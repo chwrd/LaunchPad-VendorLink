@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Menu = require('./menu.model');
 
 const vendorSchema = new mongoose.Schema({
   vendorId: { type: String, unique: true, required: true },
@@ -12,7 +13,7 @@ const vendorSchema = new mongoose.Schema({
   },
   zipCode: { type: String },
   hours: { type: String },
-  menu: [{ type: String }],
+  menu: [Menu.schema], // Array of Menu subdocuments
   serviceType: [{ type: String, enum: ["food", "entertainment", "training", "printing", "photo/video", "decor", "AV/lighting"] }],
   fulfillmentMethod: [{ type: String, enum: ["delivery", "pickup"] }],
   tags: [{ type: String }],
