@@ -7,10 +7,10 @@ const menuSchema = new mongoose.Schema({
   description: { type: String },
   type: { type: String, enum: ["regular", "special", "seasonal", "catering"], default: "regular" },
   pricing: {
-    deliveryFee: { type: Number, default: 0 },
-    serviceFee: { type: Number, default: 0 },
-    additionalFee: { type: Number, default: 0 },
-    taxRate: { type: Number, default: 0 },
+    deliveryFee: { type: mongoose.Schema.Types.Decimal128, default: 0 },
+    serviceFee: { type: mongoose.Schema.Types.Decimal128, default: 0 },
+    additionalFee: { type: mongoose.Schema.Types.Decimal128, default: 0 },
+    taxRate: { type: mongoose.Schema.Types.Decimal128, default: 0 },
     minimumOrder: { type: Number },
     maximumOrder: { type: Number }
   },

@@ -4,7 +4,7 @@ import VendorProfileSection from "./VendorProfileSection";
 export default async function VendorProfile({ params }) {
   const awaitedParams = await params;
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-10 px-2">
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-10 px-30">
       <div className="w-full max-w-7xl">
 
         {/* Main Card Section */}
