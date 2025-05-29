@@ -7,7 +7,21 @@ export async function POST(req) {
   try {
     await dbConnect();
     const body = await req.json();
-    // Validate required fields
+    // If body is an array, use insertMany
+    if (Array.isArray(body)) {
+      // Validate required fields for each object
+      for (const vendor of body) {
+        const requiredFields = ["vendorId", "name", "email"];
+        for (const field of requiredFields) {
+          if (!vendor[field]) {
+            return NextResponse.json({ success: false, error: `Missing required field: ${field}` }, { status: 400 });
+          }
+        }
+      }
+      const vendors = await Vendor.insertMany(body);
+      return NextResponse.json({ success: true, vendors });
+    }
+    // Single object as before
     const requiredFields = ["vendorId", "name", "email"];
     for (const field of requiredFields) {
       if (!body[field]) {
