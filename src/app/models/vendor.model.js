@@ -35,4 +35,4 @@ const vendorSchema = new mongoose.Schema({
   notes: { type: String }
 });
 
-module.exports = mongoose.model('Vendor', vendorSchema);
+module.exports = mongoose.models.Vendor || mongoose.model('Vendor', vendorSchema);

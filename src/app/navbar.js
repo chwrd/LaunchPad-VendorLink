@@ -41,10 +41,25 @@ export default function navbar() {
                     className="text-lg text-gray-700 transition hover:text-gray-700/75"
                     href="/vendor"
                   >
-                    Vendor Directory
+                    Vendors
                   </Link>
                 </li>
-
+                <li>
+                  <Link
+                    className="text-lg text-gray-700 transition hover:text-gray-700/75"
+                    href="/information"
+                  >
+                    Information
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-lg text-gray-700 transition hover:text-gray-700/75"
+                    href="/guide"
+                  >
+                    Guide
+                  </Link>
+                </li>
                 <li>
                   <Link
                     className="text-lg text-gray-700 transition hover:text-gray-700/75"

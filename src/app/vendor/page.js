@@ -1,184 +1,42 @@
 'use client';
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useState } from "react";
 
-// MongoDB Vendor Schema fields
-// vendorId, name, email, phone, address, website, description, category, status, contactPerson, productsOrServices, rating, documents, notes
-
-// Example mock data (replace with API call for production)
-const vendors = [
-  {
-    _id: "1",
-    vendorId: "VEND001",
-    name: "Catering Co.",
-    email: "catering@email.com",
-    phone: "(111) 111-1111",
-    address: {
-      street: "123 Main St",
-      city: "Bothell",
-      state: "WA",
-      zip: "98011",
-      country: "USA",
-    },
-    website: "https://cateringco.com",
-    description: "Professional catering services for all types of events.",
-    category: "Food & Beverage",
-    status: "active",
-    contactPerson: "Jane Doe",
-    productsOrServices: ["Buffet", "Drinks", "Snacks"],
-    rating: 4.5,
-    documents: [],
-    notes: "UW Approved",
-  },
-  {
-    _id: "2",
-    vendorId: "VEND002",
-    name: "Sound Systems Pro",
-    email: "sound@email.com",
-    phone: "(222) 222-2222",
-    address: {
-      street: "456 Sound Ave",
-      city: "Bothell",
-      state: "WA",
-      zip: "98011",
-      country: "USA",
-    },
-    website: "https://soundsystemspro.com",
-    description: "Complete audio and visual solutions for events.",
-    category: "Audio/Visual",
-    status: "active",
-    contactPerson: "John Smith",
-    productsOrServices: ["Speakers", "Microphones", "Lighting"],
-    rating: 4.8,
-    documents: [],
-    notes: "",
-  },
-  {
-    _id: "3",
-    vendorId: "VEND003",
-    name: "Decor & More",
-    email: "decor@email.com",
-    phone: "(333) 333-3333",
-    address: {
-      street: "789 Decor Rd",
-      city: "Bothell",
-      state: "WA",
-      zip: "98011",
-      country: "USA",
-    },
-    website: "https://decoremore.com",
-    description: "Event decoration and setup services.",
-    category: "Decoration",
-    status: "active",
-    contactPerson: "Emily Lee",
-    productsOrServices: ["Flowers", "Balloons", "Tableware"],
-    rating: 4.3,
-    documents: [],
-    notes: "",
-  },
-  {
-    _id: "4",
-    vendorId: "VEND004",
-    name: "Photo Magic",
-    email: "photo@email.com",
-    phone: "(444) 444-4444",
-    address: {
-      street: "321 Camera Ln",
-      city: "Bothell",
-      state: "WA",
-      zip: "98011",
-      country: "USA",
-    },
-    website: "https://photomagic.com",
-    description: "Professional photography and videography for events.",
-    category: "Photo/Video",
-    status: "active",
-    contactPerson: "Sarah Kim",
-    productsOrServices: ["Photography", "Videography"],
-    rating: 4.7,
-    documents: [],
-    notes: "",
-  },
-  {
-    _id: "5",
-    vendorId: "VEND005",
-    name: "Print Pros",
-    email: "print@email.com",
-    phone: "(555) 555-5555",
-    address: {
-      street: "654 Print Ave",
-      city: "Bothell",
-      state: "WA",
-      zip: "98011",
-      country: "USA",
-    },
-    website: "https://printpros.com",
-    description: "High-quality printing services for banners, flyers, and more.",
-    category: "Printing",
-    status: "active",
-    contactPerson: "Mike Brown",
-    productsOrServices: ["Banners", "Flyers", "Posters"],
-    rating: 4.2,
-    documents: [],
-    notes: "",
-  },
-  {
-    _id: "6",
-    vendorId: "VEND006",
-    name: "AV Experts",
-    email: "av@email.com",
-    phone: "(666) 666-6666",
-    address: {
-      street: "987 AV Blvd",
-      city: "Bothell",
-      state: "WA",
-      zip: "98011",
-      country: "USA",
-    },
-    website: "https://avexperts.com",
-    description: "Audio/visual and lighting solutions for any event.",
-    category: "AV/Lighting",
-    status: "active",
-    contactPerson: "Linda Green",
-    productsOrServices: ["AV Setup", "Lighting"],
-    rating: 4.6,
-    documents: [],
-    notes: "UW Approved",
-  },
-  {
-    _id: "7",
-    vendorId: "VEND007",
-    name: "Party Decorators",
-    email: "party@email.com",
-    phone: "(777) 777-7777",
-    address: {
-      street: "159 Party St",
-      city: "Bothell",
-      state: "WA",
-      zip: "98011",
-      country: "USA",
-    },
-    website: "https://partydecorators.com",
-    description: "Creative decorations and event setup for all occasions.",
-    category: "Decor",
-    status: "active",
-    contactPerson: "Oscar White",
-    productsOrServices: ["Decor", "Setup"],
-    rating: 4.4,
-    documents: [],
-    notes: "",
-  },
-];
-
-export default function VendorDirectory() {
+export default function VendorList() {
+  const [vendors, setVendors] = useState([]);
   const [expanded, setExpanded] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchVendors() {
+      setLoading(true);
+      try {
+        const res = await fetch("/api/vendor");
+        const data = await res.json();
+        if (data.success) {
+          setVendors(data.vendors);
+        } else {
+          setError(data.error || "Failed to load vendors");
+        }
+      } catch (err) {
+        setError("Failed to load vendors");
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchVendors();
+  }, []);
+
+  if (loading) return <div className="p-8">Loading vendors...</div>;
+  if (error) return <div className="p-8 text-red-500">{error}</div>;
 
   return (
     <div className="flex min-h-screen bg-gray-50">
-      {/* Left: Directory and Filters */}
+      {/* Left: Vendor List and Filters */}
       <div className="flex-1 p-8">
-        <h1 className="text-4xl font-extrabold mb-1">Vendor Directory</h1>
+        <h1 className="text-4xl font-extrabold mb-1">Vendor List</h1>
         <p className="mb-6 text-lg text-gray-600">Vendors near you</p>
         {/* Filters */}
         <div className="mb-8">
@@ -237,22 +95,30 @@ export default function VendorDirectory() {
               <div className="w-full">
                 <div className="flex justify-between items-center mb-1">
                   <h3 className="font-bold text-lg">{vendors.find(v => v._id === expanded)?.name}</h3>
-                  <span className="text-green-600 font-semibold">$$</span>
+                  <span className="text-green-600 font-semibold">{vendors.find(v => v._id === expanded)?.priceRange || '$$'}</span>
                 </div>
                 <div className="flex gap-2 text-xs text-gray-500 mb-2">
-                  <span>Pick Up</span>
-                  <span>Delivery</span>
+                  {vendors.find(v => v._id === expanded)?.fulfillmentMethod?.map((m) => (
+                    <span key={m}>{m}</span>
+                  ))}
                 </div>
                 <div className="text-xs mb-1"><b>Phone Number:</b> {vendors.find(v => v._id === expanded)?.phone}</div>
                 <div className="text-xs mb-1"><b>Email:</b> {vendors.find(v => v._id === expanded)?.email}</div>
                 <div className="text-xs mb-1"><b>Hours:</b> {vendors.find(v => v._id === expanded)?.hours || '8 AM - 9PM'}</div>
                 <div className="text-xs mb-1"><b>Address:</b> {vendors.find(v => v._id === expanded)?.address?.street}, {vendors.find(v => v._id === expanded)?.address?.city}, {vendors.find(v => v._id === expanded)?.address?.state} {vendors.find(v => v._id === expanded)?.address?.zip}</div>
                 <div className="text-xs mb-2"><b>Overview:</b> {vendors.find(v => v._id === expanded)?.description}</div>
-                <button className="w-full bg-[#179b98] hover:bg-[#117c7a] text-white font-bold py-2 rounded-lg mb-2 transition">BOOK NOW</button>
-                <div className="flex items-center gap-2 mt-2">
-                  <span className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center text-white text-xs">✓</span>
-                  <span className="text-xs text-gray-600">UW Approved</span>
-                </div>
+                <Link
+                  href={`/vendor/${vendors.find(v => v._id === expanded)?.vendorId}`}
+                  className="w-full block text-center bg-[#179b98] hover:bg-[#117c7a] text-white font-bold py-2 rounded-lg mb-2 transition"
+                >
+                  BOOK NOW
+                </Link>
+                {vendors.find(v => v._id === expanded)?.approved && (
+                  <div className="flex items-center gap-2 mt-2">
+                    <span className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center text-white text-xs">✓</span>
+                    <span className="text-xs text-gray-600">UW Approved</span>
+                  </div>
+                )}
               </div>
               <button className="absolute top-2 right-2 text-gray-400 hover:text-gray-700" onClick={() => setExpanded(null)}>&times;</button>
             </div>
