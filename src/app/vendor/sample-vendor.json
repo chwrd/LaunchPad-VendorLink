@@ -1,0 +1,87 @@
+{
+  "vendorId": "freshbites2025",
+  "name": "Fresh Bites",
+  "email": "contact@freshbites.com",
+  "address": {
+    "street": "456 Market St",
+    "city": "Metro City",
+    "state": "NY",
+    "zip": "10001",
+    "country": "USA"
+  },
+  "zipCode": "10001",
+  "hours": "9:00 AM - 8:00 PM",
+  "serviceType": ["food"],
+  "fulfillmentMethod": ["delivery", "pickup"],
+  "tags": ["organic", "lunch", "healthy"],
+  "phone": "555-987-6543",
+  "website": "https://freshbites.com",
+  "socialMediaLinks": ["https://instagram.com/freshbites"],
+  "priceRange": "$$$",
+  "fees": "No delivery fee for orders over $30",
+  "active": true,
+  "approved": true,
+  "admin": "adminuser",
+  "description": "Fresh Bites offers healthy, organic meals for busy professionals.",
+  "category": "restaurant",
+  "status": "active",
+  "rating": 4.8,
+  "documents": [],
+  "notes": "Premium vendor for demo.",
+  "menu": [
+    {
+      "menuId": "spring-specials-2025",
+      "name": "Spring Specials",
+      "deliveryFee": 3.00,
+      "additionalFee": 1.50,
+      "taxRate": 0.09,
+      "available": true,
+      "startTime": "10:00",
+      "endTime": "14:00",
+      "daysAvailable": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "items": [
+        {
+          "itemId": "avocado-toast-2025",
+          "name": "Avocado Toast",
+          "price": 6.99,
+          "unit": "each",
+          "description": "Sourdough toast topped with smashed avocado and microgreens."
+        },
+        {
+          "itemId": "quinoa-bowl-2025",
+          "name": "Quinoa Bowl",
+          "price": 9.49,
+          "unit": "each",
+          "description": "Protein-packed quinoa bowl with roasted veggies and tahini sauce."
+        }
+      ]
+    },
+    {
+      "menuId": "lunch-favorites-2025",
+      "name": "Lunch Favorites",
+      "deliveryFee": 4.00,
+      "additionalFee": 2.00,
+      "taxRate": 0.08,
+      "available": true,
+      "startTime": "11:00",
+      "endTime": "15:00",
+      "daysAvailable": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "items": [
+        {
+          "itemId": "grilled-chicken-wrap-2025",
+          "name": "Grilled Chicken Wrap",
+          "price": 8.99,
+          "unit": "each",
+          "description": "Whole wheat wrap with grilled chicken, veggies, and house sauce."
+        },
+        {
+          "itemId": "vegan-burger-2025",
+          "name": "Vegan Burger",
+          "price": 10.49,
+          "unit": "each",
+          "description": "Plant-based burger with lettuce, tomato, and vegan mayo."
+        }
+      ]
+    }
+  ]
+}

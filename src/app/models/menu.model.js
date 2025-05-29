@@ -13,7 +13,8 @@ const menuSchema = new mongoose.Schema({
   endTime: { type: String },   // e.g. '18:00'
   daysAvailable: [{ type: String }], // e.g. ['Monday', 'Tuesday']
   updatedAt: { type: Date, default: Date.now },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  image: { type: String } // New field for image link
 });
 
 module.exports = mongoose.models.Menu || mongoose.model('Menu', menuSchema);

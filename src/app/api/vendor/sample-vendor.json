@@ -1,0 +1,60 @@
+{
+  "vendorId": "samplevendor2025",
+  "name": "Sample Vendor",
+  "email": "samplevendor@example.com",
+  "address": {
+    "street": "123 Main St",
+    "city": "Sample City",
+    "state": "CA",
+    "zip": "90001",
+    "country": "USA"
+  },
+  "zipCode": "90001",
+  "hours": "8:00 AM - 6:00 PM",
+  "serviceType": ["food"],
+  "fulfillmentMethod": ["delivery", "pickup"],
+  "tags": ["lunch", "specials", "healthy"],
+  "phone": "555-123-4567",
+  "website": "https://samplevendor.com",
+  "socialMediaLinks": ["https://instagram.com/samplevendor"],
+  "priceRange": "$$",
+  "fees": "No hidden fees",
+  "active": true,
+  "approved": true,
+  "admin": "adminuser",
+  "description": "A sample vendor for demonstration purposes.",
+  "category": "cafe",
+  "status": "active",
+  "rating": 4.5,
+  "documents": [],
+  "notes": "Test vendor for API.",
+  "menu": [
+    {
+      "menuId": "lunchspecials2025",
+      "name": "Lunch Specials",
+      "deliveryFee": 5.00,
+      "additionalFee": 2.00,
+      "taxRate": 0.08,
+      "available": true,
+      "startTime": "11:00",
+      "endTime": "15:00",
+      "daysAvailable": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "items": [
+        {
+          "itemId": "chicken-sandwich-2025",
+          "name": "Chicken Sandwich",
+          "price": 8.99,
+          "unit": "each",
+          "description": "Grilled chicken sandwich with lettuce and tomato"
+        },
+        {
+          "itemId": "veggie-wrap-2025",
+          "name": "Veggie Wrap",
+          "price": 7.49,
+          "unit": "each",
+          "description": "Fresh veggie wrap with hummus"
+        }
+      ]
+    }
+  ]
+}

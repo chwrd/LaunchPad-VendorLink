@@ -1,0 +1,27 @@
+{
+  "menuId": "spring-specials-2025",
+  "name": "Spring Specials",
+  "deliveryFee": 3.00,
+  "additionalFee": 1.50,
+  "taxRate": 0.09,
+  "available": true,
+  "startTime": "10:00",
+  "endTime": "14:00",
+  "daysAvailable": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+  "items": [
+    {
+      "itemId": "avocado-toast-2025",
+      "name": "Avocado Toast",
+      "price": 6.99,
+      "unit": "each",
+      "description": "Sourdough toast topped with smashed avocado and microgreens."
+    },
+    {
+      "itemId": "quinoa-bowl-2025",
+      "name": "Quinoa Bowl",
+      "price": 9.49,
+      "unit": "each",
+      "description": "Protein-packed quinoa bowl with roasted veggies and tahini sauce."
+    }
+  ]
+}

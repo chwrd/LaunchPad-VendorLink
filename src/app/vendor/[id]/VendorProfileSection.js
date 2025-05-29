@@ -80,29 +80,51 @@ export default function VendorProfileSection({ vendorId }) {
             <div className="text-gray-700 text-sm mb-2">
               <span className="font-semibold">Service Type:</span> {vendor.serviceType?.join(", ")}
             </div>
+                <div className="text-gray-700 text-sm mb-2">
+              <span className="font-semibold">Specialty:</span> {vendor.specialty}
+            </div>
             <div className="text-gray-700 text-sm mb-2">
               <span className="font-semibold">Overview:</span> {vendor.description}
             </div>
+        
             <button className="mt-4 px-8 py-2 rounded-full bg-[#183d4a] text-white font-bold text-lg shadow hover:bg-[#179b98] transition">BOOK NOW</button>
           </div>
         </div>
-        {/* Products Section */}
-        <div className="mt-8">
-          <h2 className="text-xl font-bold mb-2">Products</h2>
-          <div className="grid grid-cols-2 gap-4">
-            {/* Example product cards, replace with real data if available */}
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="flex items-center gap-3 border rounded-lg p-3 bg-white">
-                <img src="/file.svg" alt="Product" className="w-16 h-16 rounded object-cover border border-gray-200" />
-                <div className="flex-1">
-                  <div className="font-semibold">Box of coffee</div>
-                  <div className="text-sm text-gray-600">$28.00 &nbsp; Qty: 1 &nbsp; Serves 20</div>
-                  <div className="text-xs text-gray-500">Freshly brewed box of black coffee, perfect for events or meetings.</div>
+        {/* Menu Section - Display all MongoDB menu and item data */}
+        <div className="mt-10">
+          <h2 className="text-2xl font-bold mb-4 text-[#179b98]">Menus</h2>
+          {Array.isArray(vendor.menu) && vendor.menu.length > 0 ? (
+            vendor.menu.map((menu) => (
+              <div key={menu.menuId || menu._id} className="mb-8 p-6 bg-white rounded-xl shadow border border-gray-100">
+                <div className="flex flex-wrap items-center gap-4 mb-2">
+                  <span className="text-xl font-bold text-[#183d4a]">{menu.name}</span>
+                  <span className="text-sm bg-[#d0f5f4] text-[#179b98] px-3 py-1 rounded-full font-medium">{menu.available ? 'Available' : 'Unavailable'}</span>
+                  <span className="text-xs text-gray-500">{menu.daysAvailable?.join(', ')}</span>
+                  <span className="text-xs text-gray-500">{menu.startTime} - {menu.endTime}</span>
                 </div>
-                <button className="ml-2 text-2xl text-gray-400 hover:text-[#179b98]">+</button>
+                <div className="text-sm text-gray-600 mb-2">Delivery Fee: ${menu.deliveryFee?.toFixed(2)} | Additional Fee: ${menu.additionalFee?.toFixed(2)} | Tax: {(menu.taxRate * 100).toFixed(1)}%</div>
+                <div className="mt-2">
+                  <div className="font-semibold mb-2 text-[#117c7a]">Items</div>
+                  {Array.isArray(menu.items) && menu.items.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {menu.items.map((item) => (
+                        <div key={item.itemId || item._id} className="border rounded-lg p-4 bg-[#f8fdfa] flex flex-col gap-1">
+                          <div className="font-bold text-[#183d4a]">{item.name}</div>
+                          <div className="text-sm text-gray-700">{item.description}</div>
+                          <div className="text-xs text-gray-500">Unit: {item.unit}</div>
+                          <div className="text-base font-semibold text-[#179b98]">${item.price?.toFixed(2)}</div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-gray-400 italic">No items listed for this menu.</div>
+                  )}
+                </div>
               </div>
-            ))}
-          </div>
+            ))
+          ) : (
+            <div className="text-gray-400 italic">No menus found for this vendor.</div>
+          )}
         </div>
       </div>
       {/* Right: Stats and Top Items */}

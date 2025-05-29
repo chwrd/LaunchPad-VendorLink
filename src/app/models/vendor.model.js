@@ -14,8 +14,12 @@ const vendorSchema = new mongoose.Schema({
   zipCode: { type: String },
   hours: { type: String },
   menu: [Menu.schema], // Array of Menu subdocuments
-  serviceType: [{ type: String, enum: ["food", "entertainment", "training", "printing", "photo/video", "decor", "AV/lighting"] }],
+  category: [{ type: String, enum: ["food", "entertainment", "training", "printing", "photo/video", "decor", "AV/lighting"] }],
+  //Business specialy (cuisine, entertainment type, etc.)
+  specialty: { type: String },
+  //Business fulfillment method (delivery, pickup, etc.)
   fulfillmentMethod: [{ type: String, enum: ["delivery", "pickup"] }],
+  //Business tags (e.g. vegan, gluten-free, etc.)
   tags: [{ type: String }],
   phone: { type: String },
   email: { type: String, required: true },
@@ -23,17 +27,20 @@ const vendorSchema = new mongoose.Schema({
   socialMediaLinks: [{ type: String }],
   priceRange: { type: String },
   fees: { type: String },
-  active: { type: Boolean, default: true },
+  //vendor status on the platform
+  status: { type: String, default: 'active' },
   approved: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
+  //admin information for the vendor
   admin: { type: String },
+  //Additional information about the vendor
   description: { type: String },
-  category: { type: String },
-  status: { type: String, default: 'active' },
+
   rating: { type: Number, min: 0, max: 5 },
   documents: [{ type: String }],
-  notes: { type: String }
+  notes: { type: String },
+  image: { type: String },
 });
 
 module.exports = mongoose.models.Vendor || mongoose.model('Vendor', vendorSchema);
