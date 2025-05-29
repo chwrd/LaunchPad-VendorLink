@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function SignIn() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
-      <div className="rounded-xl border-2 border-blue-300 shadow-lg p-10 w-[350px] bg-teal-600 flex flex-col items-center">
+      <div className="rounded-xl border-2 border-blue-300 shadow-lg p-10 w-[350px] bg-[#179b98] flex flex-col items-center">
         <h2 className="text-3xl font-normal text-white mb-2">VendorLink</h2>
         <p className="text-xs text-white mb-6">Enter your credentials to access your account</p>
         <form className="w-full flex flex-col gap-4" action="#" method="POST">

@@ -5,13 +5,13 @@ export default function DashboardPage() {
     <div className="min-h-screen flex flex-row">
       {/* Left side: Dashboard content */}
       <div className="flex-1 bg-[#f7f9fa] p-10">
-        <h1 className="text-4xl font-black mb-1 border-b-4 border-[#2596be] inline-block">
+        <h1 className="text-4xl font-black mb-1 border-b-4 border-[#179b98] inline-block">
           My Dashboard
         </h1>
         <p className="text-gray-500 mb-8">your recent activity</p>
         {/* Tabs */}
         <div className="flex gap-8 border-b border-gray-300 mb-4">
-          <button className="text-[#2596be] border-b-2 border-[#2596be] pb-2 px-2 font-medium">
+          <button className="text-[#179b98] border-b-2 border-[#179b98] pb-2 px-2 font-medium">
             Quick status
           </button>
           <button className="text-gray-500 pb-2 px-2">Upcoming Events</button>
@@ -99,7 +99,7 @@ export default function DashboardPage() {
         </div>
       </div>
       {/* Right side: Calendar and Tasks */}
-      <div className="w-[40%] min-h-screen bg-teal-600 flex flex-col items-center justify-center">
+      <div className="w-[40%] min-h-screen bg-[#179b98] flex flex-col items-center justify-center">
         <div className="bg-white rounded-xl shadow-lg p-6 w-[350px]">
           <h3 className="font-semibold mb-4">Todays Task</h3>
           <ul className="mb-4 text-sm text-gray-700">

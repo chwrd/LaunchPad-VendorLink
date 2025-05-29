@@ -10,15 +10,18 @@ const juliusSansOne = Julius_Sans_One({
 
 export default function navbar() {
   return (
-    <header className=" shadow-sm">
+    <header className="shadow-sm">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <div className="md:flex md:items-center md:gap-12">
-            <Link className="block text-[#2596be]" href="/">
-              <span className="sr-only">Home</span>
-              <h1 className={`${juliusSansOne.className} text-black text-4xl`}>
-                VendorLink
-              </h1>
+        <div className="flex items-center justify-between"> {/* Increased height */}
+          <div className="md:flex md:items-center">
+            <Link className="flex items-center text-[#179b98]" href="/">
+              <Image
+                src="/VendorLink.png"
+                alt="VendorLink Logo"
+                width={96}
+                height={96}
+                className="h-24 w-24 object-contain"
+              />
             </Link>
           </div>
 
@@ -36,12 +39,12 @@ export default function navbar() {
                 <li>
                   <Link
                     className="text-lg text-gray-700 transition hover:text-gray-700/75"
-                    href="/vendor-list"
+                    href="/vendor"
                   >
                     Vendor Directory
                   </Link>
                 </li>
-                
+
                 <li>
                   <Link
                     className="text-lg text-gray-700 transition hover:text-gray-700/75"
@@ -57,13 +60,11 @@ export default function navbar() {
           <div className="flex items-center ">
             <div className="sm:flex sm:gap-4">
               <Link
-                className="rounded-md bg-[#2596be] hover:bg-[#2596be]/75 px-5 py-2.5 text-sm font-medium text-white shadow-sm"
+                className="rounded-md bg-[#179b98] hover:bg-[#117c7a] px-5 py-2.5 text-sm font-medium text-white shadow-sm"
                 href="/auth/signin"
               >
                 Sign In
               </Link>
-
-              
             </div>
 
             <div className="block md:hidden">
